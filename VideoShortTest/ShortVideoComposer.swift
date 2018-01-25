@@ -31,10 +31,18 @@ class ShortVideoComposer {
         return true
     }
 
-    func createShortVideo(_ url:URL, complition: @escaping ()->()) {
-        let currentAsset = AVAsset(url: url)
+    var hasVideo: Bool {
+        return FileManager.default.fileExists(atPath: urlForSavingCapturedVideo().path)
+    }
+    
+    func createShortVideo(_ url: URL?, complition: @escaping (URL?)->()) {
+        let savedURL = urlForSavingCapturedVideo()
+        if !hasVideo {
+            guard save(url, to: savedURL) else { complition(nil); return }
+        }
+        let currentAsset = AVAsset(url: savedURL)
         let mixComposition = AVMutableComposition()
-        CMTimeMake(shortTime, 1)
+
         
         let compositionShortVideoTrack = mixComposition.addMutableTrack(withMediaType: AVMediaType.video,
                                                                    preferredTrackID: kCMPersistentTrackID_Invalid)
@@ -83,12 +91,12 @@ class ShortVideoComposer {
         }
         guard let shortExportSession = AVAssetExportSession.init(asset: mixComposition,
                                                                   presetName: AVAssetExportPreset960x540) else {
-                                                                    complition()
+                                                                    complition(nil)
                                                                     return }
         shortExportSession.outputFileType = AVFileType.mov
         shortExportSession.shouldOptimizeForNetworkUse = true
         guard let slowmoTempURL = self.urlForSavingSlowedVideo(name:"") else {
-            complition()
+            complition(nil)
             return
         }
         shortExportSession.outputURL = slowmoTempURL
@@ -96,17 +104,17 @@ class ShortVideoComposer {
         shortExportSession.exportAsynchronously {
             switch shortExportSession.status {
             case .completed:
+                complition(slowmoTempURL)
                 mainAsync {
                     self.saveToDeviceGallery(slowmoTempURL, completion: { (url) in
                         print(url as Any)
-                        complition()
                     })
                 }
-            case .failed: print("failed = \(shortExportSession.error as Any)")
-            case .cancelled: print("cancelled = \(shortExportSession.error as Any)")
-            case .exporting: print("exporting = \(shortExportSession.error as Any)")
-            case .waiting: print("waiting = \(shortExportSession.error as Any)")
-            case .unknown: print("unknown = \(shortExportSession.error as Any)")
+            case .failed: print("failed = \(shortExportSession.error as Any)"); fallthrough
+            case .cancelled: print("cancelled = \(shortExportSession.error as Any)"); fallthrough
+            case .exporting: print("exporting = \(shortExportSession.error as Any)"); fallthrough
+            case .waiting: print("waiting = \(shortExportSession.error as Any)"); fallthrough
+            case .unknown: print("unknown = \(shortExportSession.error as Any)"); complition(nil)
             }
         }
     }
@@ -116,7 +124,26 @@ class ShortVideoComposer {
         guard let _ = deleteFileUrl(outputFilePath) else { return nil }
         return outputFilePath
     }
-    
+    fileprivate func urlForSavingCapturedVideo() -> URL {
+        let captureFilePath = docsDir.appendingPathComponent("fullName.mov")
+//        guard let _ = deleteFileUrl(captureFilePath) else { return nil }
+        return captureFilePath
+    }
+    func savedCapturedUrl(_ url:URL) -> URL? {
+//        guard let captureFilePath = urlForSavingCapturedVideo() else { return nil }
+        let captureFilePath = urlForSavingCapturedVideo()
+        let success = save(url, to: captureFilePath)
+        return (success ? captureFilePath : nil)
+    }
+    fileprivate func save(_ url: URL?, to newUrl:URL) -> Bool {
+        guard
+            let url = url,
+            let videoData = NSData(contentsOf: url)
+            else { return false }
+        let success = videoData.write(to: newUrl, atomically: true)
+        return success
+    }
+
     fileprivate func savePhotosToDeviceGallery() {
         PHPhotoLibrary.requestAuthorization { (status) in
             switch status {

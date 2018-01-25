@@ -18,6 +18,7 @@ extension ViewController: GIDSignInDelegate, GIDSignInUIDelegate {}
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     let composer = ShortVideoComposer()
+    let service =  GTLRYouTubeService()
     let apiKey = "AIzaSyCZZu4o_oM0QG6eCN-PKoFGf8eoTqsrMBc"
     var user: GIDGoogleUser?
     
@@ -32,13 +33,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
-//        GIDSignIn.sharedInstance().signIn()
         GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeYouTube, kGTLRAuthScopeYouTubeUpload]
         GIDSignIn.sharedInstance().shouldFetchBasicProfile = true
-//        loginGoogle()
+        GIDSignIn.sharedInstance().signInSilently()
     }
 
     @IBAction func selectVideo() {
+        guard !composer.hasVideo else {
+            composer.createShortVideo(nil) { smalVideoUrl in
+                mainAsync {
+                    self.dismiss(animated: true, completion: nil)
+                    self.view.isUserInteractionEnabled = true
+                }
+                guard let url = smalVideoUrl else { return }
+                self.uploadVideo(from: url)
+            }
+            return
+        }
         let imagePickerController = UIImagePickerController()
         
         imagePickerController.sourceType = .photoLibrary
@@ -52,6 +63,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         GIDSignIn.sharedInstance().signOut()
     }
 
+// MARK: - rest request for login with second code
 //    fileprivate func loginGoogle() {
 //        let body = ["client_id" : "681345708038-2utd09gfnhn125v75cucpkvsjj46hcj9.apps.googleusercontent.com",
 //                    "scope" : "email profile"]
@@ -67,17 +79,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 //        }
 //    }
 
-    func getRequestVideoInfo(){
-        let service =  GTLRYouTubeService()
+    func uploadVideo(from url: URL){
         service.authorizer = GIDSignIn.sharedInstance().currentUser.authentication.fetcherAuthorizer()
+//        let query = GTLRYouTubeQuery_ActivitiesList.query(withPart: "snippet")
+//        query.mine = true;
+//
+//        service.executeQuery(query) { (ticket, obj, error) in
+//            print(ticket)
+//            print(obj)
+//            print(error)
+//        }
+
+        let status = GTLRYouTube_VideoStatus()
+        status.privacyStatus = kGTLRYouTube_VideoStatus_PrivacyStatus_Public
         
-        let activObjec = GTLRYouTube_Activity()
-        let uploadQuery = GTLRYouTubeQuery_ActivitiesInsert.query(withObject: activObjec, part: "fileDetails")
+        let snippet = GTLRYouTube_VideoSnippet()
+        snippet.title = "Lalala"
+        snippet.descriptionProperty = "TestUpload"
+        snippet.tags = "test,video,upload".components(separatedBy: ",")
         
-        let query = GTLRYouTubeQuery_ActivitiesList.query(withPart: "snippet")
-        query.mine = true;
+        let youtubeVideo = GTLRYouTube_Video()
+        youtubeVideo.snippet = snippet
+        youtubeVideo.status = status
         
-        service.executeQuery(query) { (ticket, obj, error) in
+        let uploadParams = GTLRUploadParameters(fileURL: url, mimeType: "video/mp4")
+        
+        let uploadQuery = GTLRYouTubeQuery_VideosInsert.query(withObject: youtubeVideo, part: "snippet,status", uploadParameters: uploadParams)
+        
+        uploadQuery.executionParameters.uploadProgressBlock = {(progressTicket, totalBytesUploaded, totalBytesExpectedToUpload) in
+            print("Uploaded", totalBytesUploaded)
+        }
+        
+//        let uploadQuery = GTLRYouTubeQuery_ActivitiesInsert.query(withObject: activObjec, part: "fileDetails")
+        
+        service.executeQuery(uploadQuery) { (ticket, obj, error) in
             print(ticket)
             print(obj)
             print(error)
@@ -102,10 +137,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             return
         }
 
-        composer.createShortVideo(url) {
+        view.isUserInteractionEnabled = false
+
+        composer.createShortVideo(url) { smalVideoUrl in
             mainAsync {
-              self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
+                self.view.isUserInteractionEnabled = true
             }
+            guard let url = smalVideoUrl else { return }
+            self.uploadVideo(from: url)
         }
     }
     
@@ -137,7 +177,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if (error == nil) {
             self.user = user
-            getRequestVideoInfo()
             let userId = user.userID                  // For client-side use only!
             let idToken = user.authentication.idToken // Safe to send to the server
             let fullName = user.profile.name

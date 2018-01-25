@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C51F64487D7668AF5D22BF6 /* Pods_VideoShortTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CDAE57370F90EAA5456A489 /* Pods_VideoShortTest.framework */; };
 		9EBA708C2017A21600D9C137 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA708B2017A21600D9C137 /* AppDelegate.swift */; };
 		9EBA708E2017A21600D9C137 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA708D2017A21600D9C137 /* ViewController.swift */; };
 		9EBA70912017A21600D9C137 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA708F2017A21600D9C137 /* Main.storyboard */; };
 		9EBA70932017A21600D9C137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA70922017A21600D9C137 /* Assets.xcassets */; };
 		9EBA70962017A21600D9C137 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA70942017A21600D9C137 /* LaunchScreen.storyboard */; };
+		9EBA709E2017A22F00D9C137 /* ShortVideoComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA709D2017A22F00D9C137 /* ShortVideoComposer.swift */; };
+		9EBA70A22018C89900D9C137 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA70A12018C89800D9C137 /* GoogleService-Info.plist */; };
+		9EBA70A82019190B00D9C137 /* client_681345708038-9m7kst3hrn6ndr1pkpq5531e8rmv2nk5.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA70A72019190B00D9C137 /* client_681345708038-9m7kst3hrn6ndr1pkpq5531e8rmv2nk5.apps.googleusercontent.com.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3CDAE57370F90EAA5456A489 /* Pods_VideoShortTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoShortTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EBA70882017A21600D9C137 /* VideoShortTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoShortTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EBA708B2017A21600D9C137 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EBA708D2017A21600D9C137 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,12 @@
 		9EBA70922017A21600D9C137 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9EBA70952017A21600D9C137 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9EBA70972017A21600D9C137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9EBA709D2017A22F00D9C137 /* ShortVideoComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortVideoComposer.swift; sourceTree = "<group>"; };
+		9EBA70A12018C89800D9C137 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9EBA70A32018C96100D9C137 /* VideoShortTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoShortTest-Bridging-Header.h"; sourceTree = "<group>"; };
+		9EBA70A72019190B00D9C137 /* client_681345708038-9m7kst3hrn6ndr1pkpq5531e8rmv2nk5.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_681345708038-9m7kst3hrn6ndr1pkpq5531e8rmv2nk5.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
+		D95FC88591ACD4F4C313FF43 /* Pods-VideoShortTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoShortTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VideoShortTest/Pods-VideoShortTest.debug.xcconfig"; sourceTree = "<group>"; };
+		DFCD625143F8C211D8E8E16C /* Pods-VideoShortTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoShortTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-VideoShortTest/Pods-VideoShortTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +40,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C51F64487D7668AF5D22BF6 /* Pods_VideoShortTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A51E8BC950C706C3FD3CBEF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D95FC88591ACD4F4C313FF43 /* Pods-VideoShortTest.debug.xcconfig */,
+				DFCD625143F8C211D8E8E16C /* Pods-VideoShortTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9EBA707F2017A21600D9C137 = {
 			isa = PBXGroup;
 			children = (
 				9EBA708A2017A21600D9C137 /* VideoShortTest */,
 				9EBA70892017A21600D9C137 /* Products */,
+				5A51E8BC950C706C3FD3CBEF /* Pods */,
+				A5EB4342F8F08A4CB8C5CB5A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +79,24 @@
 			children = (
 				9EBA708B2017A21600D9C137 /* AppDelegate.swift */,
 				9EBA708D2017A21600D9C137 /* ViewController.swift */,
+				9EBA709D2017A22F00D9C137 /* ShortVideoComposer.swift */,
 				9EBA708F2017A21600D9C137 /* Main.storyboard */,
 				9EBA70922017A21600D9C137 /* Assets.xcassets */,
 				9EBA70942017A21600D9C137 /* LaunchScreen.storyboard */,
 				9EBA70972017A21600D9C137 /* Info.plist */,
+				9EBA70A12018C89800D9C137 /* GoogleService-Info.plist */,
+				9EBA70A72019190B00D9C137 /* client_681345708038-9m7kst3hrn6ndr1pkpq5531e8rmv2nk5.apps.googleusercontent.com.plist */,
+				9EBA70A32018C96100D9C137 /* VideoShortTest-Bridging-Header.h */,
 			);
 			path = VideoShortTest;
+			sourceTree = "<group>";
+		};
+		A5EB4342F8F08A4CB8C5CB5A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3CDAE57370F90EAA5456A489 /* Pods_VideoShortTest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +106,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9EBA709A2017A21600D9C137 /* Build configuration list for PBXNativeTarget "VideoShortTest" */;
 			buildPhases = (
+				F28F11293A0BB204C13C3F77 /* [CP] Check Pods Manifest.lock */,
 				9EBA70842017A21600D9C137 /* Sources */,
 				9EBA70852017A21600D9C137 /* Frameworks */,
 				9EBA70862017A21600D9C137 /* Resources */,
+				3ED8C73FF8F890A5124553A6 /* [CP] Embed Pods Frameworks */,
+				140DF33C8E6B12CD21A4F527 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,7 +134,8 @@
 				TargetAttributes = {
 					9EBA70872017A21600D9C137 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -125,11 +164,82 @@
 			files = (
 				9EBA70962017A21600D9C137 /* LaunchScreen.storyboard in Resources */,
 				9EBA70932017A21600D9C137 /* Assets.xcassets in Resources */,
+				9EBA70A22018C89900D9C137 /* GoogleService-Info.plist in Resources */,
 				9EBA70912017A21600D9C137 /* Main.storyboard in Resources */,
+				9EBA70A82019190B00D9C137 /* client_681345708038-9m7kst3hrn6ndr1pkpq5531e8rmv2nk5.apps.googleusercontent.com.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		140DF33C8E6B12CD21A4F527 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-VideoShortTest/Pods-VideoShortTest-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VideoShortTest/Pods-VideoShortTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3ED8C73FF8F890A5124553A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-VideoShortTest/Pods-VideoShortTest-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VideoShortTest/Pods-VideoShortTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F28F11293A0BB204C13C3F77 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VideoShortTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9EBA70842017A21600D9C137 /* Sources */ = {
@@ -137,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EBA708E2017A21600D9C137 /* ViewController.swift in Sources */,
+				9EBA709E2017A22F00D9C137 /* ShortVideoComposer.swift in Sources */,
 				9EBA708C2017A21600D9C137 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,14 +383,21 @@
 		};
 		9EBA709B2017A21600D9C137 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D95FC88591ACD4F4C313FF43 /* Pods-VideoShortTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YQ63ZZYZV7;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 7AGU424Q34;
 				INFOPLIST_FILE = VideoShortTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nixsolutions.VideoShortTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4faa8c1e-40c2-4af3-85c9-6ff367734aa1";
+				PROVISIONING_PROFILE_SPECIFIER = USH_Development;
+				SWIFT_OBJC_BRIDGING_HEADER = "VideoShortTest/VideoShortTest-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -287,14 +405,19 @@
 		};
 		9EBA709C2017A21600D9C137 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFCD625143F8C211D8E8E16C /* Pods-VideoShortTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YQ63ZZYZV7;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = VideoShortTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nixsolutions.VideoShortTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "VideoShortTest/VideoShortTest-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
